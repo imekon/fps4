@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var stage = $stage
+@onready var fpsText = $HUD/FPS
 
 func _ready():
 	randomize()
@@ -36,3 +37,9 @@ func _ready():
 	inst.position.y = inst.position.y - 0.1
 	inst.position.z = 20
 	stage.add_child(inst)
+
+func _process(delta: float) -> void:
+	fpsText.text = "FPS: " + str(Engine.get_frames_per_second())
+	
+	if Input.is_action_just_pressed("quit"):
+		get_tree().quit()
