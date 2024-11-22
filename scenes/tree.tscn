@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4iqluafmwcbn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byalj"]
+albedo_color = Color(0.612962, 0, 0.144715, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8cd83"]
+albedo_color = Color(6.35326e-06, 0.772748, 0.115062, 1)
+
+[node name="tree" type="Node3D"]
+
+[node name="trunk" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+use_collision = true
+size = Vector3(1, 5, 1)
+material = SubResource("StandardMaterial3D_byalj")
+
+[node name="head" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+size = Vector3(3, 2, 3)
+material = SubResource("StandardMaterial3D_8cd83")
