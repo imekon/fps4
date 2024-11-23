@@ -11,6 +11,7 @@ func _ready():
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
+	player.position.x = 5
 	player.position.z = -5
 	
 	var floor = preload("res://scenes/empty_floor.tscn")
@@ -54,6 +55,13 @@ func _ready():
 	inst = staircase.instantiate()
 	inst.position.x = -5
 	inst.position.y = -0.4
+	stage.add_child(inst)
+	
+	inst = staircase.instantiate()
+	inst.position.x = 5
+	inst.position.y = 5 - 0.4
+	inst.position.z = -5
+	inst.rotate_y(deg_to_rad(90))
 	stage.add_child(inst)
 
 func _process(_delta: float) -> void:

@@ -8,6 +8,6 @@ func _ready():
 	
 	for n in 50:
 		inst = step.instantiate()
-		inst.position.z = inst.position.z - 0.3 - n * 0.3
-		inst.position.y = inst.position.y + 0.1 * n + 0.1
+		inst.position.z = inst.position.z - (1 + n) * Globals.STAIR_OFFSET
+		inst.position.y = inst.position.y + Globals.STAIR_HEIGHT * (n + 1)
 		add_child(inst)

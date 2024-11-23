@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bw1vgtpljpmmh"]
+[gd_scene load_steps=3 format=3 uid="uid://bw1vgtpljpmmh"]
+
+[ext_resource type="Script" path="res://scripts/staircase_step.gd" id="1_8vm7t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0url1"]
 albedo_color = Color(0.233361, 0.233351, 0.239386, 1)
 
 [node name="step" type="Node3D"]
+script = ExtResource("1_8vm7t")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 use_collision = true
