@@ -1,19 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmxrsweoq2ghm"]
+[gd_scene load_steps=9 format=3 uid="uid://bmxrsweoq2ghm"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_apc8j"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_qa76x"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4lcro"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wvv4e"]
 
-[sub_resource type="Sky" id="Sky_doosv"]
-sky_material = SubResource("ProceduralSkyMaterial_4lcro")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tpwla"]
+seamless = true
+noise = SubResource("FastNoiseLite_wvv4e")
 
-[sub_resource type="Environment" id="Environment_kmap2"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p3gi8"]
+sky_cover = SubResource("NoiseTexture2D_tpwla")
+
+[sub_resource type="Sky" id="Sky_pth4x"]
+sky_material = SubResource("ProceduralSkyMaterial_p3gi8")
+
+[sub_resource type="Environment" id="Environment_o5v3m"]
 background_mode = 2
-sky = SubResource("Sky_doosv")
-tonemap_mode = 2
+sky = SubResource("Sky_pth4x")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kw7iy"]
 
@@ -29,7 +33,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
-environment = SubResource("Environment_kmap2")
+environment = SubResource("Environment_o5v3m")
 
 [node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93083, 0)
