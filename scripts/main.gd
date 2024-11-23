@@ -1,12 +1,17 @@
 extends Node3D
 
 @onready var stage = $stage
-@onready var fpsText = $HUD/FPS
+@onready var player = $player
+@onready var fps = $HUD/FPS
+@onready var trees = $HUD/Trees
+@onready var walls = $HUD/Walls
 
 func _ready():
 	randomize()
 	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	player.position.z = -5
 	
 	var floor = preload("res://scenes/empty_floor.tscn")
 	var inst = floor.instantiate()
@@ -37,9 +42,18 @@ func _ready():
 	inst.position.y = inst.position.y - 0.1
 	inst.position.z = 20
 	stage.add_child(inst)
+	
+	var enclosed = preload("res://scenes/enclosed_floor.tscn")
+	inst = enclosed.instantiate()
+	inst.walls = Globals.WALL_Y | Globals.WALL_W | Globals.TREES
+	inst.position.x = 0
+	inst.position.z = 20
+	stage.add_child(inst)
 
-func _process(delta: float) -> void:
-	fpsText.text = "FPS: " + str(Engine.get_frames_per_second())
+func _process(_delta: float) -> void:
+	fps.text = "FPS: " + str(Engine.get_frames_per_second())
+	trees.text = "Trees: " + str(get_tree().get_node_count_in_group("tree"))
+	walls.text = "Walls: " + str(get_tree().get_node_count_in_group("wall"))
 	
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()

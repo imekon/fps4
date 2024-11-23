@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3g6msvsvkq4"]
+
+[ext_resource type="Script" path="res://scripts/enclosed_floor.gd" id="1_8iylu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbofi"]
+albedo_color = Color(0.321074, 0.316944, 0, 1)
+
+[node name="enclosed_floor" type="Node3D"]
+script = ExtResource("1_8iylu")
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(20, 0.1, 20)
+material = SubResource("StandardMaterial3D_wbofi")
