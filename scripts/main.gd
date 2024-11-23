@@ -49,6 +49,12 @@ func _ready():
 	inst.position.x = 0
 	inst.position.z = 20
 	stage.add_child(inst)
+	
+	var staircase = preload("res://scenes/staircase.tscn")
+	inst = staircase.instantiate()
+	inst.position.x = -5
+	inst.position.y = -0.4
+	stage.add_child(inst)
 
 func _process(_delta: float) -> void:
 	fps.text = "FPS: " + str(Engine.get_frames_per_second())

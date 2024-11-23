@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw1vgtpljpmmh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0url1"]
+albedo_color = Color(0.233361, 0.233351, 0.239386, 1)
+
+[node name="step" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(2.5, 0.1, 1.4)
+material = SubResource("StandardMaterial3D_0url1")

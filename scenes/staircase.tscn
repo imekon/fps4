@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dljx8hy3fp8g8"]
+
+[ext_resource type="Script" path="res://scripts/staircase.gd" id="1_54n82"]
+
+[node name="staircase" type="Node3D"]
+script = ExtResource("1_54n82")
